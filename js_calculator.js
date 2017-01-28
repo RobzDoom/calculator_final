@@ -36,7 +36,6 @@ function button_clicked() {
             $(".display").text(input.join(""));
             break;
     }
-
 }
 
 
