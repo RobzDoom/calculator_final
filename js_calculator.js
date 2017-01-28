@@ -15,6 +15,7 @@ function button_clicked() {
     console.log('Button has been clicked');
     var buttons_value = $(this).val();
 
+
     switch (buttons_value){
         case 'C':
             console.log('You have cleared all data.');

@@ -19,6 +19,7 @@ var display;
 
 function write_number(number) {
     input[input_index] = input[input_index] + number;
+    console.log(input)
 }
 
 function write_operator (operator){
@@ -30,23 +31,23 @@ function write_operator (operator){
     input_index++;
     input[input_index] = '';
 }
-
+///equal adds result once the numbers and operators are logged
 function equal (){
-    var num1 = input[0];
-    var num2 = input[2];
-    var operator = input[1];
+    while (input.length > 2 && input[2]!= '') {
+        var num1 = input[0];
+        var num2 = input[2];
+        var operator = input[1];
 
-    var answer = doMath(num1, num2, operator);
-    console.log (answer);
+        var answer = doMath(num1, num2, operator);
+        console.log(answer);
 
+        input.splice(0, 2);
+        input[0] = answer;
+    }
+    input[0];
 }
 
-
-// write_number('7');
-// write_number('2');
-// write_operator('+');
-// write_number('2');
-// equal();
+///This function will be doing the math with given Operators
 function doMath(num1, num2, operator) {
     switch (operator){
         case '+':
@@ -66,6 +67,9 @@ function doMath(num1, num2, operator) {
 
 write_number('7');
 write_number('2');
+write_operator('+');
+write_number('2');
+write_number('3');
 write_operator('+');
 write_number('2');
 equal();
