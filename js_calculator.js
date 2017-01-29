@@ -15,17 +15,17 @@ function button_clicked() {
     console.log('Button has been clicked');
     var buttons_value = $(this).val();
 
-
     switch (buttons_value){
         case 'C':
             console.log('You have cleared all data.');
             input = [''];
             input_index=0;
-            $('.display').text(input.join(''));
+            $('.display').text();
             break;
         case '=':
             console.log ('This will compute your output.');
             equal();
+            $('.display').text();
             break;
         case "*":
         case "/":
@@ -34,7 +34,7 @@ function button_clicked() {
         default:
             console.log("you have selected a number");
             write_number(buttons_value);
-            $(".display").text(input.join(""));
+            $(".display").text();
             break;
     }
 }

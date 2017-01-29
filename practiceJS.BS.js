@@ -1,15 +1,40 @@
 $(document).ready(function(){
     console.log('document.ready is good!');
-    function click_handlers() {
-        $('.inputs, .operators, .clear').click(button_clicked);
-        }
+
     click_handlers();
 });
-
+function click_handlers() {
+        $('.inputs, .operators, .clear').click(button_clicked);
+        $('.equal_button').click(button_clicked);
+}
 function button_clicked() {
     console.log('button has been clicked');
     var buttons_value = $(this).val();
     console.log("value of the button is "+ buttons_value);
+
+    switch (buttons_value){
+        case 'C':
+            console.log('You have cleared all data.');
+            input = [''];
+            input_index=0;
+            $('.display').text(input);
+            break;
+        case '=':
+            console.log ('This will compute your output.');
+            equal();
+            $(".display").text(input);
+            break;
+        case "*":
+        case "/":
+        case "+":
+        case "-":
+        default:
+            console.log("you have selected a number");
+            write_number(buttons_value);
+            $(".display").text(input);
+            break;
+    }
+
 
 }
 
@@ -18,6 +43,15 @@ var input =  [''];
 var display;
 
 function write_number(number) {
+    //Write an if statement that will deter me from adding multiple '.'
+    if (number === '.'){
+        for (var i = 0; i < input[input_index].length; i++){
+            if (input[input_index][i] === '.' ){
+                return;
+            }
+        }
+    }
+
     input[input_index] = input[input_index] + number;
     console.log(input)
 }
@@ -65,12 +99,11 @@ function doMath(num1, num2, operator) {
     }
 }
 
-write_number('7');
-write_number('2');
-write_operator('+');
-write_number('2');
-write_number('3');
-write_operator('+');
-write_number('2');
-equal();
+// write_number('7');
+// write_operator('+');
+// write_operator('+');
+// write_operator('*');
+// write_number('2');
+// equal();
+
 
