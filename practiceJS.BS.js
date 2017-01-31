@@ -8,7 +8,6 @@ function click_handlers() {
         $('.equal_button').click(button_clicked);
 }
 function button_clicked() {
-    console.log('button has been clicked');
     var buttons_value = $(this).val();
     console.log("value of the button is "+ buttons_value);
 
@@ -19,23 +18,48 @@ function button_clicked() {
             input_index=0;
             $('.display').text(input);
             break;
+        case 'CE':
+            console.log('You have cleared last data input');
+            if(input[input_index] !== ""){
+                if(input_index == 0){
+                    input.pop();
+                    input = [""];
+                }
+                else{
+                    input.pop();
+                    input.push("");
+                }
+            }
+            else if(input[input_index] === "" && input_index !== 0){
+                input.pop();
+                input.pop();
+                input_index -= 2;
+            }
+
+            break;
         case '=':
             console.log ('This will compute your output.');
             equal();
             $(".display").text(input);
             break;
         case "*":
+            write_operator('*');
+            break;
         case "/":
+            write_operator('/');
+            break;
         case "+":
+            write_operator('+');
+            break;
         case "-":
+            write_operator('-');
+            break;
         default:
             console.log("you have selected a number");
             write_number(buttons_value);
-            $(".display").text(input);
+            $(".display").text(input.join(" "));
             break;
     }
-
-
 }
 
 var input_index = 0;
@@ -43,7 +67,7 @@ var input =  [''];
 var display;
 
 function write_number(number) {
-    //Write an if statement that will deter me from adding multiple '.'
+    // Write an if statement that will deter me from adding multiple '.'
     if (number === '.'){
         for (var i = 0; i < input[input_index].length; i++){
             if (input[input_index][i] === '.' ){
@@ -52,14 +76,20 @@ function write_number(number) {
         }
     }
 
-    input[input_index] = input[input_index] + number;
+    input[input_index] += number;
     console.log(input)
 }
 
 function write_operator (operator){
     if (input[input_index] === ""){
+        input[input_index -1] = operator;
+
+        console.log('New operator to replace old ' , input[input_index-1]);
         return;
-    }
+    };
+
+
+
     input_index++;
     input[input_index] = operator;
     input_index++;
@@ -78,7 +108,7 @@ function equal (){
         input.splice(0, 2);
         input[0] = answer;
     }
-    input[0];
+    input_index = 0;
 }
 
 ///This function will be doing the math with given Operators
@@ -101,9 +131,11 @@ function doMath(num1, num2, operator) {
 
 // write_number('7');
 // write_operator('+');
-// write_operator('+');
+// write_operator('-');
 // write_operator('*');
 // write_number('2');
+// write_number('3');
+//
 // equal();
 
 
