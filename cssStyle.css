@@ -6,10 +6,12 @@ body{
 }
 
 header{
-    background-color: gray;
     height: 17vh;
     width: 100vw;
-
+    padding-top: 2vh;
+}
+.text{
+    color: white
 }
 .header_info{
     text-align: center;
@@ -71,7 +73,6 @@ body div div div button{
 .display{
     background-color: #022c3e;
     color: white;
-    border-radius: 10px;
     text-align: center;
     width: 25vw;
     height: 7vh;
@@ -79,7 +80,46 @@ body div div div button{
     margin-top: 2vh;
 }
 
-#plus_sign{
+@media screen and (max-width: 667px) {
+    .display{
+        background-color: #022c3e;
+        color: white;
+        text-align: center;
+        width: 90vw;
+        height: 5vh;
+        text-align: left;
+        margin-top: 3vh;
+        padding-left: 7px; 
+    }
+    .calculator_container{
+        width: 100vw;
+        height: 62vh;
+        border: solid black;
+        margin: auto;
+        padding-left: 3vw;
+        background-color: #009ACD;
+        margin-top: 2vh;
+        margin-right: 37vw;
+    }
+    body div div div button{
+        border: solid 1px;
+        color: white;
+        background-color: orange;
+        width: 23%;
+        font-size: 2.5rem;
+        text-align: center;
+        height: 7vh;
+    }
+    header{
+        height: 10vh;
+    }
+    h1{
+        font-size: 1.7rem
+    }
+    .numericals div button{
+        margin-top: 3vh
+    }
+
 }
 
 
