@@ -1,12 +1,15 @@
+//---------------------------------- CALCULATOR STARTS ----------------------------------
 $(document).ready(function(){
     console.log('document.ready is good!');
 
     click_handlers();
 });
+
 function click_handlers() {
         $('.inputs, .operators, .clear').click(button_clicked);
         $('.equal_button').click(button_clicked);
 }
+//---------------------------------- Define Button Clicked ----------------------------------
 function button_clicked() {
     var buttons_value = $(this).val();
     console.log("value of the button is "+ buttons_value);
@@ -128,14 +131,5 @@ function doMath(num1, num2, operator) {
             break
     }
 }
-
-// write_number('7');
-// write_operator('+');
-// write_operator('-');
-// write_operator('*');
-// write_number('2');
-// write_number('3');
-//
-// equal();
 
 
